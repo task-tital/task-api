@@ -1,0 +1,22 @@
+{
+  "name": "task-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/task-tital/task-api.git"
+  },
+  "author": "alonso y juanpa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/task-tital/task-api/issues"
+  },
+  "homepage": "https://github.com/task-tital/task-api#readme",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.2"
+  }
+}
