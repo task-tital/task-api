@@ -1,0 +1,49 @@
+{
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "extends": ["airbnb-base", "plugin:prettier/recommended"],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "rules": {
+      "import/newline-after-import": "off",
+      "arrow-body-style": "off",
+      "strict": "off",
+      "no-multi-assign": "off",
+      "import/order": "off",
+      "no-plusplus": "off",
+      "no-param-reassign": "off",
+      "prefer-destructuring": "off",
+      "lines-around-directive": "off",
+      "no-underscore-dangle": "off",
+      "func-names": "off",
+      "no-prototype-builtins": "off",
+      "no-await-in-loop": "off",
+      "no-restricted-syntax": "off",
+      "import/no-dynamic-require": "off",
+      "no-buffer-constructor": "off",
+      "camelcase": "off",
+      "import/no-unresolved": "off",
+      "prefer-promise-reject-errors": "off",
+      "array-callback-return": "off",
+      "no-unneeded-ternary": "off",
+      "operator-assignment": "off",
+      "global-require": "off",
+      "radix": "off",
+      "class-methods-use-this": "off",
+      "no-useless-constructor": "off",
+      "no-template-curly-in-string": "off",
+      "no-constant-condition": "off",
+      "object-shorthand": "off",
+      "no-continue": "off",
+      "prefer-rest-params": "off",
+      "no-return-assign": "off",
+      "no-restricted-globals": "off",
+      "no-use-before-define": "off"
+    }
+  }
