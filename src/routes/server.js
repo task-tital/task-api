@@ -33,7 +33,7 @@ const routes = [
         }
     },
     {
-        method: 'GET',
+        method: 'POST',
         path: ROUTE_SELECT,
         handler: (request, response) => {
             return tasksImpl.select(request, response);

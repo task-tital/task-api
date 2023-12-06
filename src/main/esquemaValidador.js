@@ -1,7 +1,10 @@
 const Joi = require('@hapi/joi');
 const DataTypes = require('sequelize');
-// const operacionesOpValidas = require('task-services/src/operations/pgOperations');
-const operacionesOpValidas = ["LIKE", "EQUALS", "GREATER", "LOWER", ""];
+const { OPERACIONES_OP_VALIDAS } = require('task-services/src/operations/pgOperations');
+const { TasksModel } = require('task-services/src/models/task');
+
+const listaClavesTasksModel = Object.keys(TasksModel);
+
 
 const validador = (modelo) => {
     const esquema = {};
@@ -45,26 +48,26 @@ const esquemaInsert = Joi.object({
     priority: Joi.number().integer().positive().optional()
 });
 const esquemaSelect = Joi.object({
-    attributes: Joi.array().required(),
+    attributes: Joi.array().items(Joi.string().valid(...listaClavesTasksModel)).required(),
     conditions: Joi.object({
         id: Joi.object({
-            tipoOperacion: Joi.string().uppercase().trim().valid(...operacionesOpValidas).required(),
+            tipoOperacion: Joi.string().uppercase().trim().valid(...OPERACIONES_OP_VALIDAS).required(),
             valor: Joi.string().uuid().required()
         }).optional(),
         title: Joi.object({
-            tipoOperacion: Joi.string().uppercase().trim().valid(...operacionesOpValidas).required(),
+            tipoOperacion: Joi.string().uppercase().trim().valid(...OPERACIONES_OP_VALIDAS).required(),
             valor: Joi.string().trim().required()
         }).optional(),
         description: Joi.object({
-            tipoOperacion: Joi.string().uppercase().trim().valid(...operacionesOpValidas).required(),
+            tipoOperacion: Joi.string().uppercase().trim().valid(...OPERACIONES_OP_VALIDAS).required(),
             valor: Joi.string().optional()
         }).optional(),
         dateEnd: Joi.object({
-            tipoOperacion: Joi.string().uppercase().trim().valid(...operacionesOpValidas).required(),
+            tipoOperacion: Joi.string().uppercase().trim().valid(...OPERACIONES_OP_VALIDAS).required(),
             valor: Joi.date().optional()
         }).optional(),
         priority: Joi.object({
-            tipoOperacion: Joi.string().uppercase().trim().valid(...operacionesOpValidas).required(),
+            tipoOperacion: Joi.string().uppercase().trim().valid(...OPERACIONES_OP_VALIDAS).required(),
             valor: Joi.number().integer().positive().optional()
         }).optional()
     }).required()
