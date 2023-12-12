@@ -8,7 +8,7 @@ const ROUTE_SELECT = ROUTE_ROOT + '/select';
 const ROUTE_UPDATE = ROUTE_ROOT + '/update';
 const ROUTE_DELETE = ROUTE_ROOT + '/delete';
 
-tasksImpl = new TasksController();
+tasksContr = new TasksController();
 
 const routes = [
     {
@@ -29,30 +29,30 @@ const routes = [
         method: 'GET',
         path: ROUTE_SELECTALL,
         handler: (request, response) => {
-            return tasksImpl.selectAll(request, response);
+            return tasksContr.selectAll(request, response);
         }
     },
     {
         method: 'POST',
         path: ROUTE_SELECT,
         handler: (request, response) => {
-            return tasksImpl.select(request, response);
+            return tasksContr.select(request, response);
         }
     },
     {
         method: 'POST',
         path: ROUTE_INSERT,
-        handler: tasksImpl.insert
+        handler: tasksContr.insert
     },
     {
         method: 'PUT',
         path: ROUTE_UPDATE,
-        handler: tasksImpl.update
+        handler: tasksContr.update
     },
     {
         method: 'PUT',
         path: ROUTE_DELETE,
-        handler: tasksImpl.delete
+        handler: tasksContr.delete
     }
 ];
 
