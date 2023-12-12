@@ -1,6 +1,6 @@
 // importar el modelo y las operaciones del servicio.
 
-const { Tasks } = require('task-services/src/models/task');
+const { TasksModel } = require('task-services/src/models/task');
 const { insertPg, selectAllPg, selectPg, updatePg, deletePg } = require('task-services/src/operations/pgOperations');
 const {Request, ResponseToolkit, ResponseObject} = require('@hapi/hapi');
 const { validarEntradaInsert, validarEntradaSelect, validarEntradaUpdate, validarEntradaDelete } = require('./validarEntradas');
@@ -40,7 +40,7 @@ class TasksController {
     async insert(request, response) {
         try {
             const data = validarEntrada(request, validarEntradaInsert);
-            const jsonSalida = await insertPg(Tasks, data);
+            const jsonSalida = await insertPg(TasksModel, data);
             return response.response(jsonSalida).code(200);
         } catch(error) {
             controllerError("insert", error);
@@ -60,7 +60,7 @@ class TasksController {
      */
     async selectAll(request, response) {
         try {
-            const jsonSalida = await selectAllPg(Tasks);
+            const jsonSalida = await selectAllPg(TasksModel);
             return response.response(jsonSalida).code(200);
         } catch(error) {
             controllerError("selectAll", error);
@@ -76,7 +76,7 @@ class TasksController {
     async select(request, response) {
         try {
             const [ attributes, conditions ] = validarEntrada(request, validarEntradaSelect);
-            const jsonSalida = await selectPg(Tasks, attributes, conditions);
+            const jsonSalida = await selectPg(TasksModel, attributes, conditions);
             return response.response(jsonSalida).code(200);
         } catch(error) {
             controllerError("select", error);
@@ -97,7 +97,7 @@ class TasksController {
     async update(request, response) {
         try {
             const [id, data] = validarEntrada(request, validarEntradaUpdate);
-            const jsonSalida = await updatePg(Tasks, data, id);
+            const jsonSalida = await updatePg(TasksModel, data, id);
             return response.response(jsonSalida).code(200);
         } catch(error) {
             controllerError("update", error);
@@ -118,7 +118,7 @@ class TasksController {
     async delete(request, response) {
         try {
             const id = validarEntrada(request, validarEntradaDelete);
-            const jsonSalida = await deletePg(Tasks, id);
+            const jsonSalida = await deletePg(TasksModel, id);
             return response.response(jsonSalida).code(200);
         } catch(error) {
             controllerError("delete", error);
